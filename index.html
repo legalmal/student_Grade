@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enter student assessment scores and see totals and grades update immediately.">
+  <title>Student Score Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">JavaScript Events · Assignment 1</p>
+      <h1>Student Score Calculator</h1>
+      <p class="intro">Enter each student's assessment scores. Their total and grade update as you type.</p>
+    </header>
+
+    <section class="calculator" aria-labelledby="scores-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="scores-heading">Class scores</h2>
+          <p>Continuous assessment is out of 30; the exam is out of 70.</p>
+        </div>
+        <span class="live-indicator"><span aria-hidden="true"></span> Updates live</span>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Enter scores for five students to calculate totals and grades.</caption>
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Name</th>
+              <th scope="col">CA1 <span>/ 10</span></th>
+              <th scope="col">CA2 <span>/ 10</span></th>
+              <th scope="col">CA3 <span>/ 10</span></th>
+              <th scope="col">Exam <span>/ 70</span></th>
+              <th scope="col">Total <span>/ 100</span></th>
+              <th scope="col">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="row-number">01</th>
+              <td class="student-name">Student 1</td>
+              <td><label class="visually-hidden" for="s1-ca1">Student 1 CA1 score, out of 10</label><input id="s1-ca1" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="1" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s1-ca2">Student 1 CA2 score, out of 10</label><input id="s1-ca2" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="1" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s1-ca3">Student 1 CA3 score, out of 10</label><input id="s1-ca3" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="1" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s1-exam">Student 1 exam score, out of 70</label><input id="s1-exam" type="number" min="0" max="70" step="1" inputmode="numeric" placeholder="—" data-student="1" aria-describedby="validation-message"></td>
+              <td class="total" data-total="1">—</td><td class="grade" data-grade="1">—</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-number">02</th>
+              <td class="student-name">Student 2</td>
+              <td><label class="visually-hidden" for="s2-ca1">Student 2 CA1 score, out of 10</label><input id="s2-ca1" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="2" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s2-ca2">Student 2 CA2 score, out of 10</label><input id="s2-ca2" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="2" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s2-ca3">Student 2 CA3 score, out of 10</label><input id="s2-ca3" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="2" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s2-exam">Student 2 exam score, out of 70</label><input id="s2-exam" type="number" min="0" max="70" step="1" inputmode="numeric" placeholder="—" data-student="2" aria-describedby="validation-message"></td>
+              <td class="total" data-total="2">—</td><td class="grade" data-grade="2">—</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-number">03</th>
+              <td class="student-name">Student 3</td>
+              <td><label class="visually-hidden" for="s3-ca1">Student 3 CA1 score, out of 10</label><input id="s3-ca1" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="3" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s3-ca2">Student 3 CA2 score, out of 10</label><input id="s3-ca2" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="3" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s3-ca3">Student 3 CA3 score, out of 10</label><input id="s3-ca3" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="3" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s3-exam">Student 3 exam score, out of 70</label><input id="s3-exam" type="number" min="0" max="70" step="1" inputmode="numeric" placeholder="—" data-student="3" aria-describedby="validation-message"></td>
+              <td class="total" data-total="3">—</td><td class="grade" data-grade="3">—</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-number">04</th>
+              <td class="student-name">Student 4</td>
+              <td><label class="visually-hidden" for="s4-ca1">Student 4 CA1 score, out of 10</label><input id="s4-ca1" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="4" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s4-ca2">Student 4 CA2 score, out of 10</label><input id="s4-ca2" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="4" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s4-ca3">Student 4 CA3 score, out of 10</label><input id="s4-ca3" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="4" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s4-exam">Student 4 exam score, out of 70</label><input id="s4-exam" type="number" min="0" max="70" step="1" inputmode="numeric" placeholder="—" data-student="4" aria-describedby="validation-message"></td>
+              <td class="total" data-total="4">—</td><td class="grade" data-grade="4">—</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-number">05</th>
+              <td class="student-name">Student 5</td>
+              <td><label class="visually-hidden" for="s5-ca1">Student 5 CA1 score, out of 10</label><input id="s5-ca1" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="5" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s5-ca2">Student 5 CA2 score, out of 10</label><input id="s5-ca2" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="5" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s5-ca3">Student 5 CA3 score, out of 10</label><input id="s5-ca3" type="number" min="0" max="10" step="1" inputmode="numeric" placeholder="—" data-student="5" aria-describedby="validation-message"></td>
+              <td><label class="visually-hidden" for="s5-exam">Student 5 exam score, out of 70</label><input id="s5-exam" type="number" min="0" max="70" step="1" inputmode="numeric" placeholder="—" data-student="5" aria-describedby="validation-message"></td>
+              <td class="total" data-total="5">—</td><td class="grade" data-grade="5">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="validation-message" class="validation-message" aria-live="polite"></p>
+      <p class="table-note"><span aria-hidden="true">↳</span> Enter whole number scores from 0 up to each component's maximum.</p>
+    </section>
+
+    <section class="grading" aria-labelledby="grading-heading">
+      <div class="grading-title">
+        <h2 id="grading-heading">Grading scale</h2>
+        <p>Based on the total score out of 100</p>
+      </div>
+      <div class="grade-list" aria-label="Grade ranges">
+        <div class="grade-band"><span class="grade-chip grade-a">A</span><span>70–100</span></div>
+        <div class="grade-band"><span class="grade-chip grade-b">B</span><span>60–69</span></div>
+        <div class="grade-band"><span class="grade-chip grade-c">C</span><span>50–59</span></div>
+        <div class="grade-band"><span class="grade-chip grade-d">D</span><span>45–49</span></div>
+        <div class="grade-band"><span class="grade-chip grade-e">E</span><span>40–44</span></div>
+        <div class="grade-band"><span class="grade-chip grade-f">F</span><span>0–39</span></div>
+      </div>
+    </section>
+
+    <footer>Student Score Calculator <span>·</span> Built with JavaScript events</footer>
+  </main>
+</body>
+</html>

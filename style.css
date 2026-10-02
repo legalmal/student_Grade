@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  --ink: #182b26;
+  --muted: #71807b;
+  --line: #e9eeeb;
+  --green: #167b60;
+  --green-dark: #0f604a;
+  --green-pale: #e9f5ef;
+  --paper: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f8f6;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 66px 0 28px; }
+.page-header { margin-bottom: 34px; }
+.eyebrow { margin: 0 0 12px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 10px; font-family: Manrope, sans-serif; font-size: clamp(30px, 4vw, 42px); font-weight: 700; letter-spacing: -.055em; line-height: 1.15; }
+.intro { margin-bottom: 0; color: var(--muted); font-size: 15px; }
+.calculator, .grading { overflow: hidden; border: 1px solid #e9efeb; border-radius: 14px; background: var(--paper); box-shadow: 0 8px 24px rgb(31 66 52 / 4%); }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 26px 20px; }
+.section-heading h2, .grading h2 { margin-bottom: 5px; font-family: Manrope, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.02em; }
+.section-heading p, .grading-title p { margin: 0; color: var(--muted); font-size: 12px; }
+.live-indicator { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid #dcefe5; border-radius: 20px; background: #f4fbf6; color: #42705b; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.live-indicator span { width: 7px; height: 7px; border-radius: 50%; background: #39a875; box-shadow: 0 0 0 3px #d9f0e2; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }
+thead { background: #f7f9f8; }
+thead th { height: 42px; color: #89948f; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+th, td { padding: 0 14px; }
+thead th:first-child, tbody th:first-child { padding-left: 26px; }
+thead th:last-child, tbody td:last-child { padding-right: 26px; }
+thead th span { color: #a3ada8; font-size: 9px; font-weight: 500; }
+tbody tr { border-bottom: 1px solid #eef1ef; }
+tbody tr:last-child { border-bottom: 0; }
+tbody th, tbody td { height: 58px; }
+.row-number { color: #a5afaa; font-size: 11px; font-weight: 600; }
+.student-name { color: #30423c; font-size: 12px; font-weight: 600; }
+input { width: 58px; height: 34px; padding: 0 8px; border: 1px solid #e3e9e5; border-radius: 6px; outline: none; background: #fff; color: #263b33; font: 500 12px 'DM Sans', sans-serif; text-align: center; transition: border-color .15s, box-shadow .15s, background .15s; }
+input::placeholder { color: #b4beb9; }
+input:hover { border-color: #b8cec2; }
+input:focus { border-color: #389474; box-shadow: 0 0 0 3px rgb(56 148 116 / 12%); }
+input[aria-invalid="true"] { border-color: #d65d55; background: #fff8f7; box-shadow: 0 0 0 3px rgb(214 93 85 / 9%); }
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { margin: 0; -webkit-appearance: none; }
+input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+.total { color: #30423c; font-size: 13px; font-weight: 700; }
+.grade { color: #a5afaa; font-family: Manrope, sans-serif; font-size: 13px; font-weight: 800; }
+.grade[data-grade="A"] { color: #16805d; }
+.grade[data-grade="B"] { color: #548248; }
+.grade[data-grade="C"] { color: #a1872d; }
+.grade[data-grade="D"] { color: #b37a32; }
+.grade[data-grade="E"] { color: #b96743; }
+.grade[data-grade="F"] { color: #bd544d; }
+.validation-message { min-height: 17px; margin: 7px 26px 0; color: #b94c45; font-size: 11px; }
+.table-note { margin: 0; padding: 2px 26px 19px; color: #96a19b; font-size: 10px; }
+.table-note span { padding-right: 4px; color: #58a382; }
+.grading { display: flex; align-items: center; gap: 30px; margin-top: 16px; padding: 19px 24px; }
+.grading-title { min-width: 194px; }
+.grading-title h2 { margin-bottom: 4px; }
+.grading-title p { font-size: 11px; }
+.grade-list { display: flex; flex: 1; justify-content: space-between; gap: 10px; }
+.grade-band { display: flex; align-items: center; gap: 8px; color: #7b8781; font-size: 11px; white-space: nowrap; }
+.grade-chip { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 7px; font-size: 11px; font-weight: 700; }
+.grade-a { background: #e4f4ec; color: #17815e; }
+.grade-b { background: #edf3e6; color: #648747; }
+.grade-c { background: #f6f1dc; color: #9b832c; }
+.grade-d { background: #f9eee0; color: #ad772d; }
+.grade-e { background: #f9ece5; color: #b56743; }
+.grade-f { background: #fae9e8; color: #b9514d; }
+footer { padding-top: 24px; color: #a0aaa5; font-size: 10px; text-align: center; }
+footer span { padding: 0 5px; color: #63a083; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+
+@media (max-width: 760px) {
+  .page-shell { width: min(100% - 32px, 600px); padding-top: 42px; }
+  .section-heading { padding: 20px 18px 16px; }
+  th, td { padding: 0 10px; }
+  thead th:first-child, tbody th:first-child { padding-left: 18px; }
+  thead th:last-child, tbody td:last-child { padding-right: 18px; }
+  .table-note { padding-right: 18px; padding-left: 18px; }
+  .validation-message { margin-right: 18px; margin-left: 18px; }
+  .grading { align-items: flex-start; flex-direction: column; gap: 14px; padding: 18px; }
+  .grade-list { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 9px 20px; }
+  .grade-band { min-width: 82px; }
+}
+
+@media (max-width: 420px) {
+  .page-shell { width: calc(100% - 24px); padding-top: 32px; }
+  .intro { font-size: 13px; line-height: 1.6; }
+  .live-indicator { padding: 6px 8px; font-size: 10px; }
+  .section-heading { align-items: flex-start; }
+  .grade-list { gap: 10px; }
+  .grade-band { min-width: 74px; }
+}
